@@ -1,5 +1,15 @@
 #include "Location.h"
 
+int Location::getRow()
+{
+	return row;
+}
+
+int Location::getCol()
+{
+	return col;
+}
+
 Location& Location::operator+=(const Location& other)
 {
 
