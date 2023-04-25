@@ -2,4 +2,6 @@
 int main() {
 	Zoo z;
 	z.run();
+
+	return 0;
 }

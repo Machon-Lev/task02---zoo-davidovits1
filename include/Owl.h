@@ -11,4 +11,5 @@ public:
 	void step() override;
 	void turnVertically() override;
 	void turnHorizontally() override;
+	void move() override;
 };

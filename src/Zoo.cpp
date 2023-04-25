@@ -1,14 +1,33 @@
 #include "Zoo.h"
 
+Location Zoo::random()
+{
+    int row = std::rand() % 20; // random number between 0 and 20
+    int col = std::rand() % 40; // random number between 0 and 40
+    
+    return Location(row, col);
+}
+
 Zoo::Zoo()
 {
-
+    std::srand(std::time(nullptr)); // seed the random number generator with the current time
 }
 void Zoo::run() {
-    std::unique_ptr<Owl> owl = std::make_unique<Owl>("Hedwig", Location(2, 3));
+    printTable();
+    Location l = random();
+    std::unique_ptr<Owl> owl = std::make_unique<Owl>("Hedwig", l);
     addAnimal(std::move(owl));
-    std::unique_ptr<Owl> owl1 = std::make_unique<Owl>("erol", Location(1, 3));
+    
+    l = random();
+
+    std::unique_ptr<Owl> owl1 = std::make_unique<Owl>("erol", l);
+    
+
     addAnimal(std::move(owl1));
+    printAnimals();
+    for (auto it = animals.begin(); it != animals.end(); ++it) {
+        (*it)->move();
+    }
     printAnimals();
 
     removeAnimal("Hedwig");
