@@ -28,34 +28,37 @@ void Owl::step()
 {
 	if (mooving)
 	{
+		const int MINROWCOL = 2;
+		const int MAXROW = 17;
+		const int MAXCOL = 37;
 		switch (direction)
 		{
 
 		case Direction::UpLeft:
-			if (location.row >= 3 && location.col >= 3)
+			if (location.row > MINROWCOL && location.col > MINROWCOL)
 			{
-				Location l(-3, -3);
+				Location l(-OWLMOVE, -OWLMOVE);
 				location += l;
 			}
 			break;
 		case Direction::UpRight:
-			if (location.row >= 3 && location.col <= 36)
+			if (location.row > MINROWCOL && location.col < MAXCOL)
 			{
-				Location l(-3, 3);
+				Location l(-OWLMOVE, OWLMOVE);
 				location += l;
 			}
 			break;
 		case Direction::DownLeft:
-			if (location.row <= 16 && location.col >= 3)
+			if (location.row < MAXROW && location.col > MINROWCOL)
 			{
-				Location l(3, -3);
+				Location l(OWLMOVE, -OWLMOVE);
 				location += l;
 			}
 			break;
 		case Direction::DownRight:
-			if (location.row <= 16 && location.col <= 36)
+			if (location.row < MAXROW && location.col < MAXCOL)
 			{
-				Location l(3, 3);
+				Location l(OWLMOVE, OWLMOVE);
 				location += l;
 			}
 			break;
@@ -114,5 +117,4 @@ void Owl::move()
 	Animal::move();
 	int directionInt = rand() % 4 + 4; // generates a random number between 4 and 7
 	direction = static_cast<Direction>(directionInt);
-	step();
 }

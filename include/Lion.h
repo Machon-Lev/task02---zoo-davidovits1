@@ -1,6 +1,8 @@
 #pragma once
 #include "Animal.h"
 class Lion : public Animal {
+	static const int LIONMOVE = 2;
+
 public:
 
 	Lion();
