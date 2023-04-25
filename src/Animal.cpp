@@ -12,6 +12,7 @@ void Animal::printDetails() const
 	std::cout << "Location: " << location << std::endl;
 }
 
+
 Location Animal::getLocation() const
 {
 	return location;

@@ -13,7 +13,6 @@ Zoo::Zoo()
     std::srand(std::time(nullptr)); // seed the random number generator with the current time
 }
 void Zoo::run() {
-    printTable();
     Location l = random();
     std::unique_ptr<Owl> owl = std::make_unique<Owl>("Hedwig", l);
     addAnimal(std::move(owl));
@@ -24,10 +23,14 @@ void Zoo::run() {
     
 
     addAnimal(std::move(owl1));
+    printTable(animals);
+
     printAnimals();
     for (auto it = animals.begin(); it != animals.end(); ++it) {
         (*it)->move();
     }
+    printTable(animals);
+
     printAnimals();
 
     removeAnimal("Hedwig");
@@ -71,6 +74,43 @@ void Zoo::removeAnimal(const std::string& name)
             animals.erase(it);
             return;
         }
+    }
+
+}
+
+void Zoo::printTable(const std::vector<std::unique_ptr<Animal>>& animals)
+{
+    const int ROWS = 20;
+    const int COLS = 40;
+
+    char table[ROWS][COLS];
+
+    // Initialize table with spaces
+    for (int i = 0; i < ROWS; i++) {
+        for (int j = 0; j < COLS; j++) {
+            table[i][j] = ' ';
+        }
+    }
+
+    // Fill table with animal locations
+    for (const auto& animal : animals) {
+        int row = animal->getLocation().getRow();
+        int col = animal->getLocation().getCol();
+        table[row][col] = animal->getInitial();
+    }
+
+    // Print table
+    std::cout << std::setw(3) << " ";
+    for (int j = 0; j < COLS; j++) {
+        std::cout << std::setw(2) << j << " ";
+    }
+    std::cout << std::endl;
+    for (int i = 0; i < ROWS; i++) {
+        std::cout << std::setw(2) << i << " ";
+        for (int j = 0; j < COLS; j++) {
+            std::cout << " " << table[i][j] << " ";
+        }
+        std::cout << std::endl;
     }
 }
 

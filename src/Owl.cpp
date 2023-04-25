@@ -27,21 +27,21 @@ void Owl::step()
 			}
 			break;
 		case Direction::UpRight:
-			if (location.row >= 3 && location.col <= 37)
+			if (location.row >= 3 && location.col <= 36)
 			{
 				Location l(-3, 3);
 				location += l;
 			}
 			break;
 		case Direction::DownLeft:
-			if (location.row <= 17 && location.col >= 3)
+			if (location.row <= 16 && location.col >= 3)
 			{
 				Location l(3, -3);
 				location += l;
 			}
 			break;
 		case Direction::DownRight:
-			if (location.row <= 17 && location.col <= 37)
+			if (location.row <= 16 && location.col <= 36)
 			{
 				Location l(3, 3);
 				location += l;
