@@ -1,5 +1,17 @@
 #include "Owl.h"
 
+Owl::Owl():Animal()
+{
+	int directionInt = rand() % 4 + 4;
+	direction = static_cast<Direction>(directionInt);
+}
+
+Owl::Owl(const std::string& n, const Location& l): Animal(n, l)
+{
+	int directionInt = rand() % 4 + 4;
+	direction = static_cast<Direction>(directionInt);
+}
+
 void Owl::printDetails() const
 {
 	std::cout << "Kind: Owl" << std::endl;

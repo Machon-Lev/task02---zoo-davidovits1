@@ -1,5 +1,17 @@
 #include "Lion.h"
 
+Lion::Lion()
+{
+	int directionInt = rand() % 2 + 2;
+	direction = static_cast<Direction>(directionInt);
+}
+
+Lion::Lion(const std::string& n, const Location& l)
+{
+	int directionInt = rand() % 2 + 2;
+	direction = static_cast<Direction>(directionInt);
+}
+
 void Lion::printDetails() const
 {
 	std::cout << "Kind: Lion" << std::endl;

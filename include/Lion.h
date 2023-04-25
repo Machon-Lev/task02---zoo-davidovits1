@@ -3,8 +3,8 @@
 class Lion : public Animal {
 public:
 
-	Lion() : Animal() {};
-	Lion(const std::string& n, const Location& l) : Animal(n, l) {};
+	Lion();
+	Lion(const std::string& n, const Location& l);
 
 	void printDetails() const override;
 	char getInitial() const override;
