@@ -12,12 +12,6 @@ public:
 	// Parameterized constructor
 	Location(int r, int c) : row(r), col(c) {}
 
-	// get row
-	int getRow();
-
-	// get col
-	int getCol();
-
 	// Addition assignment operator (+=)
 	Location& operator+=(const Location& other);
 

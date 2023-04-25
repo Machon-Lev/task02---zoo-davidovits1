@@ -94,9 +94,10 @@ void Zoo::printTable(const std::vector<std::unique_ptr<Animal>>& animals)
 
     // Fill table with animal locations
     for (const auto& animal : animals) {
-        int row = animal->getLocation().getRow();
-        int col = animal->getLocation().getCol();
-        table[row][col] = animal->getInitial();
+        //int row = animal->getLocation().getRow();
+        //int col = animal->getLocation().getCol();
+        Location l = animal->getLocation();
+        table[l.row][l.col] = animal->getInitial();
     }
 
     // Print table
