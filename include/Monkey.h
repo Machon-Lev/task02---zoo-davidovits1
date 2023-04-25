@@ -6,7 +6,7 @@ class Monkey : public Animal {
 public:
 
 	Monkey();
-	Monkey(const std::string& n, const Location& l) : Animal(n, l);
+	Monkey(const std::string& n, const Location& l);
 
 	void printDetails() const override;
 	char getInitial() const override;

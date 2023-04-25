@@ -1,12 +1,12 @@
 #include "Lion.h"
 
-Lion::Lion()
+Lion::Lion() : Animal()
 {
 	int directionInt = rand() % 2 + 2;
 	direction = static_cast<Direction>(directionInt);
 }
 
-Lion::Lion(const std::string& n, const Location& l)
+Lion::Lion(const std::string& n, const Location& l) : Animal(n, l)
 {
 	int directionInt = rand() % 2 + 2;
 	direction = static_cast<Direction>(directionInt);

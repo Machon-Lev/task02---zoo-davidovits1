@@ -18,23 +18,30 @@ void Zoo::run() {
     addAnimal(std::move(owl));
 
     l = random();
-    std::unique_ptr<Lion> lion = std::make_unique<Lion>("simba", l);
+    std::unique_ptr<Lion> lion = std::make_unique<Lion>("Simba", l);
     addAnimal(std::move(lion));
+
+    l = random();
+    std::unique_ptr<Monkey> monkey = std::make_unique<Monkey>("Rafiki", l);
+    addAnimal(std::move(monkey));
     
     l = random();
-    std::unique_ptr<Owl> owl1 = std::make_unique<Owl>("erol", l);
+    std::unique_ptr<Owl> owl1 = std::make_unique<Owl>("Erol", l);
     addAnimal(std::move(owl1));
 
     l = random();
-    std::unique_ptr<Lion> lion1 = std::make_unique<Lion>("nala", l);
+    std::unique_ptr<Lion> lion1 = std::make_unique<Lion>("Nala", l);
     addAnimal(std::move(lion1));
+
+    l = random();
+    std::unique_ptr<Monkey> monkey1 = std::make_unique<Monkey>("Tarzan", l);
+    addAnimal(std::move(monkey1));
 
     printTable(animals);
 
     printAnimals();
     for (auto it = animals.begin(); it != animals.end(); ++it) {
         (*it)->move();
-        printDirection(*(*it));
     }
     printTable(animals);
 
@@ -72,16 +79,15 @@ void Zoo::printAnimals() const
 {
     std::cout << "The zoo contains:" << std::endl;
     for (const auto& animal : animals) {
-        std::cout << animal->getInitial() << " - ";
         animal->printDetails();
         std::cout << std::endl;
     }
 }
 
-void Zoo::printDirection(const Animal& a)
-{
-    std::cout << "direction " << a.getName() << " : " << a.getDirection() << std::endl;
-}
+//void Zoo::printDirection(const Animal& a)
+//{
+//    std::cout << "direction " << a.getName() << " : " << a.getDirection() << std::endl;
+//}
 
 void Zoo::printTable(const std::vector<std::unique_ptr<Animal>>& animals)
 {

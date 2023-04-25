@@ -10,6 +10,7 @@ void Animal::printDetails() const
 {
 	std::cout << "Name: " << name << std::endl;
 	std::cout << "Location: " << location << std::endl;
+	std::cout << "direction: " << direction << std::endl;
 }
 
 
