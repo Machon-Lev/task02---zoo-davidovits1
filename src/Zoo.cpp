@@ -38,23 +38,6 @@ void Zoo::run() {
 
     printAnimals();
 
-
-    //Owl owl("erol", Location(1, 3));
-    //addAnimal(owl);
-
-
-    //std::cout << "\nRemoving second animal (index 1):\n";
-    //removeAnimal(1);
-
-    //// Print all animals again
-    //std::cout << "\nAll animals in the zoo after removing one:\n";
-    //printAllAnimals();
-    //addAnimal()
-    //addAnimal(std::make_unique<Owl>("Errol"));
-    //printAnimals();
-    //removeAnimal(0);
-    //printAnimals();
-
 }
 
 void Zoo::addAnimal(std::unique_ptr<Animal> animal)
@@ -76,6 +59,15 @@ void Zoo::removeAnimal(const std::string& name)
         }
     }
 
+}
+
+void Zoo::printAnimals() const
+{
+    std::cout << "The zoo contains:" << std::endl;
+    for (const auto& animal : animals) {
+        std::cout << animal->getInitial() << " - ";
+        animal->printDetails();
+    }
 }
 
 void Zoo::printTable(const std::vector<std::unique_ptr<Animal>>& animals)
