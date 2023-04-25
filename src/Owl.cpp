@@ -100,7 +100,8 @@ void Owl::turnHorizontally()
 void Owl::move()
 {
 	Animal::move();
-	int directionInt = rand() % 5 + 4; // generates a random number between 4 and 8
+	int directionInt = rand() % 4 + 4; // generates a random number between 4 and 7
 	dirction = static_cast<Direction>(directionInt);
+	std::cout << "dirction: " << directionInt << std::endl;
 	step();
 }
