@@ -2,4 +2,5 @@
 "Zoo.cpp"
 "Animal.cpp"
 "Location.cpp"
-"Owl.cpp")
+"Owl.cpp"
+"Lion.cpp")

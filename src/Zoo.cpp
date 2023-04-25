@@ -16,18 +16,25 @@ void Zoo::run() {
     Location l = random();
     std::unique_ptr<Owl> owl = std::make_unique<Owl>("Hedwig", l);
     addAnimal(std::move(owl));
+
+    l = random();
+    std::unique_ptr<Lion> lion = std::make_unique<Lion>("simba", l);
+    addAnimal(std::move(lion));
     
     l = random();
-
     std::unique_ptr<Owl> owl1 = std::make_unique<Owl>("erol", l);
-    
-
     addAnimal(std::move(owl1));
+
+    l = random();
+    std::unique_ptr<Lion> lion1 = std::make_unique<Lion>("nala", l);
+    addAnimal(std::move(lion1));
+
     printTable(animals);
 
     printAnimals();
     for (auto it = animals.begin(); it != animals.end(); ++it) {
         (*it)->move();
+        printDirection(*(*it));
     }
     printTable(animals);
 
@@ -67,7 +74,13 @@ void Zoo::printAnimals() const
     for (const auto& animal : animals) {
         std::cout << animal->getInitial() << " - ";
         animal->printDetails();
+        std::cout << std::endl;
     }
+}
+
+void Zoo::printDirection(const Animal& a)
+{
+    std::cout << "direction " << a.getName() << " : " << a.getDirection() << std::endl;
 }
 
 void Zoo::printTable(const std::vector<std::unique_ptr<Animal>>& animals)

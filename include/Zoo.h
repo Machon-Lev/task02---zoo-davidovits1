@@ -6,6 +6,7 @@
 #include <cstdlib>
 #include <ctime>
 #include "Owl.h"
+#include "Lion.h"
 
 class Zoo
 {
@@ -18,6 +19,7 @@ class Zoo
     void removeAnimal(int index);
     void removeAnimal(const std::string& name);
     void printAnimals() const;
+    void printDirection(const Animal& a);
 
 public:
 	Zoo();

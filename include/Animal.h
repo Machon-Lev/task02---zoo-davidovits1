@@ -8,7 +8,7 @@ protected:
 	bool mooving = true;
 	std::string name;
 	Location location;
-	Direction dirction;
+	Direction direction;
 	
 
 public:
@@ -18,9 +18,12 @@ public:
 	virtual char getInitial() const = 0;
 	Location getLocation() const;
 	virtual std::string getName() const;
+	virtual Direction getDirection() const;
 	virtual void step() = 0;
 	void stop();
 	virtual void move();
 	virtual void turnVertically() = 0;
 	virtual void turnHorizontally() = 0;
+
 };
+std::ostream& operator<<(std::ostream& os, Direction dir);

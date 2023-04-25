@@ -16,7 +16,7 @@ void Owl::step()
 {
 	if (mooving)
 	{
-		switch (dirction)
+		switch (direction)
 		{
 
 		case Direction::UpLeft:
@@ -57,19 +57,19 @@ void Owl::step()
 
 void Owl::turnVertically()
 {
-	switch (dirction)
+	switch (direction)
 	{
 	case Direction::UpLeft:
-		dirction = Direction::DownLeft;
+		direction = Direction::DownLeft;
 		break;
 	case Direction::UpRight:
-		dirction = Direction::DownRight;
+		direction = Direction::DownRight;
 		break;
 	case Direction::DownLeft:
-		dirction = Direction::UpLeft;
+		direction = Direction::UpLeft;
 		break;
 	case Direction::DownRight:
-		dirction = Direction::UpRight;
+		direction = Direction::UpRight;
 		break;
 	default:
 		break;
@@ -78,19 +78,19 @@ void Owl::turnVertically()
 
 void Owl::turnHorizontally()
 {
-	switch (dirction)
+	switch (direction)
 	{
 	case Direction::UpLeft:
-		dirction = Direction::UpRight;
+		direction = Direction::UpRight;
 		break;
 	case Direction::UpRight:
-		dirction = Direction::UpLeft;
+		direction = Direction::UpLeft;
 		break;
 	case Direction::DownLeft:
-		dirction = Direction::DownRight;
+		direction = Direction::DownRight;
 		break;
 	case Direction::DownRight:
-		dirction = Direction::DownLeft;
+		direction = Direction::DownLeft;
 		break;
 	default:
 		break;
@@ -101,7 +101,6 @@ void Owl::move()
 {
 	Animal::move();
 	int directionInt = rand() % 4 + 4; // generates a random number between 4 and 7
-	dirction = static_cast<Direction>(directionInt);
-	std::cout << "dirction: " << directionInt << std::endl;
+	direction = static_cast<Direction>(directionInt);
 	step();
 }
