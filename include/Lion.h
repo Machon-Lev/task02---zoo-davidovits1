@@ -27,7 +27,7 @@ public:
  	char getInitial() const override;
 
 	/// <summary>
-	/// Lion's steps - move only in the same line and always 2 steps
+	/// Owl steps - fly only diagonally and always 3 steps
 	/// </summary>
 	void step() override;
 	
