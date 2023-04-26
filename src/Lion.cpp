@@ -98,7 +98,6 @@ void Lion::turnHorizontally()
 void Lion::move()
 {
 	Animal::move();
-	// generates a random number between (left and right)
-	int directionInt = rand() % 2 + 2; 
+	int directionInt = rand() % 2 + 2; 	// generates a random number (left and right)
 	direction = static_cast<Direction>(directionInt);
 }

@@ -1,7 +1,8 @@
 #pragma once
-#include <iostream>
-#include <string>
 
+/// <summary>
+/// enum of direction
+/// </summary>
 enum class Direction {
     Up,
     Down,

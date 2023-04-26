@@ -1,4 +1,5 @@
 #pragma once
+#include <iostream>
 #include <string>
 #include "Location.h"
 #include "Direction.h"
@@ -100,7 +101,7 @@ public:
 	virtual void turnVertically() = 0;
 
 	/// <summary>
-	/// pure abstract - turn the direction vertically
+	/// pure abstract - turn the direction horizontally
 	/// </summary>
 	virtual void turnHorizontally() = 0;
 
