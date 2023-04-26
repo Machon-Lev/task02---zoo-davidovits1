@@ -1,6 +1,5 @@
 #include "Zoo.h"
 
-
 void Zoo::stopAnimal(int row, int col) const
 {
     Location l(row, col);
@@ -19,7 +18,6 @@ void Zoo::moveAnimal(int row, int col) const
         if (animal->getLocation() == l) {
             animal->move();
         }
-           // if (!animal->getIsMoveing())
     }
 }
 
@@ -34,12 +32,14 @@ Zoo::Zoo()
 {
     std::srand(std::time(nullptr)); // seed the random number generator with the current time
 }
+
 void Zoo::run() {
 
     initZoo();
     std::string input = "start";
     int row, col;
     std::string animalType, animalName;
+
     while (input != "exit")
     {
         printTable();
@@ -79,7 +79,7 @@ void Zoo::run() {
             deleteAnimalsOfType(animalType);
         }
         else if (input == "help") {
-            printMenu();
+            printHelpMenu();
         }
         else if (input == "exit") {
             break;
@@ -91,15 +91,7 @@ void Zoo::run() {
             std::cout << "Invalid command\n";
         }
         stepAllAnimals();
-
     }
-
-
-}
-
-void Zoo::addAnimal(std::unique_ptr<Animal> animal)
-{
-    animals.push_back(std::move(animal)); 
 }
 
 void Zoo::removeAnimal(const int row, const int col)
@@ -142,44 +134,47 @@ void Zoo::printAnimals() const
     }
 }
 
-void Zoo::printMenu()
+void Zoo::printHelpMenu()
 {
     std::cout << "Possible commands: " << std::endl;
-    std::cout << "STOP - make the animal stop. The command will receive as a parameter the number of the animal (as it appears in the list)." << std::endl;
-    std::cout << "MOVE - make the animal move. The command will receive as a parameter the number of the animal (as it appears in the list)." << std::endl;
+    std::cout << "STOP - make the animal stop. The command will receive as a parameter the number of the animal (as it appears in the map)." << std::endl;
+    std::cout << "MOVE - make the animal move. The command will receive as a parameter the number of the animal (as it appears in the map)." << std::endl;
     std::cout << "CREATE - creating another animal The command will receive as parameters the type of animal and a name for it. The location of the animal will be drawn random." << std::endl;
-    std::cout << "DEL - delete an animal from the list. Receives as a parameter the number of the animal (as it appears in the list)." << std::endl;
+    std::cout << "DEL - delete an animal from the list. Receives as a parameter the number of the animal (as it appears in the map)." << std::endl;
     std::cout << "DEL_ALL - deletion of all animals of a certain type." << std::endl;
     std::cout << "HELP - printing help text that explains what the possible commands are, what their parameters are and what they do." << std::endl;
     std::cout << "EXIT - exit from the program." << std::endl;
-    std::cout << "DOT - This command will be used to make the program advance to the next line, without changing anything." << std::endl;
+    std::cout << ".(DOT) - This command will be used to make the program advance to the next line, without changing anything." << std::endl;
 }
 
 void Zoo::printCommandNames()
 {
-    std::string f = "\033[1;31m";
+    //for red color - start
+    std::string s = "\033[1;31m";
+    //for red color - end
     std::string e = "\033[0m";
-    std::cout << f + "Available commands:" + e << std::endl;
-    std::cout << f + "stop <animal_number>" + e << std::endl;
-    std::cout << f + "move <animal_number>" + e << std::endl;
-    std::cout << f + "create <animal_type> <animal_name>" + e << std::endl;
-    std::cout << f + "del <animal_number>" + e << std::endl;
-    std::cout << f + "delAll <animal_type>" + e << std::endl;
-    std::cout << f + "help" + e << std::endl;
-    std::cout << f + "exit" + e << std::endl;
-    std::cout << f + ". <continu>" + e << std::endl;
+
+    std::cout << s + "Available commands:" + e << std::endl;
+    std::cout << s + "stop <animal_number>" + e << std::endl;
+    std::cout << s + "move <animal_number>" + e << std::endl;
+    std::cout << s + "create <animal_type> <animal_name>" + e << std::endl;
+    std::cout << s + "del <animal_number>" + e << std::endl;
+    std::cout << s + "delAll <animal_type>" + e << std::endl;
+    std::cout << s + "help" + e << std::endl;
+    std::cout << s + "exit" + e << std::endl;
+    std::cout << s + ". <continu>" + e << std::endl;
 }
 
-std::unique_ptr<Animal> Zoo::createAnimal(const std::string& kind, const std::string& name)
+std::unique_ptr<Animal> Zoo::createAnimal(const std::string& type, const std::string& name)
 {
     std::unique_ptr<Animal> animal;
-    if (kind == "Owl") {
+    if (type == "Owl") {
         animal = std::make_unique<Owl>(name);
     }
-    else if (kind == "Monkey") {
+    else if (type == "Monkey") {
         animal = std::make_unique<Monkey>(name);
     }
-    else if (kind == "Lion") {
+    else if (type == "Lion") {
         animal = std::make_unique<Lion>(name);
     }
     else {
@@ -256,4 +251,3 @@ void Zoo::printTable()
         std::cout << std::endl;
     }
 }
-
