@@ -65,7 +65,15 @@ void Zoo::run() {
             std::cin >> animalType;
             std::cout << "Enter the name of animal\n";
             std::cin >> animalName;
-            animals.emplace_back(createAnimal(animalType, animalName));
+            std::unique_ptr<Animal> newAnimal = createAnimal(animalType, animalName);
+            if (newAnimal != nullptr)
+            {
+                animals.emplace_back(std::move(newAnimal));
+            }
+            else
+            {
+                std::cout << "Unknown animal type: " << animalType << std::endl;
+            }
         }
         else if (input == "del") {
             std::cout << "Enter a row and column number\n";
