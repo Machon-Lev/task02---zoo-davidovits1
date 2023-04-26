@@ -73,6 +73,7 @@ void Monkey::step()
 			{
 				Location l(-numMove, 0);
 				location += l;
+				count++;
 			}
 			else
 			{
@@ -84,6 +85,7 @@ void Monkey::step()
 			{
 				Location l(numMove, 0);
 				location += l;
+				count++;
 			}
 			else
 			{
@@ -95,6 +97,7 @@ void Monkey::step()
 			{
 				Location l(0, -numMove);
 				location += l;
+				count++;
 			}
 			else
 			{
@@ -106,6 +109,8 @@ void Monkey::step()
 			{
 				Location l(0, numMove);
 				location += l;
+				count++;
+
 			}
 			else
 			{
@@ -117,7 +122,6 @@ void Monkey::step()
 			break;
 		}
 
-		count++;
 	}
 }
 

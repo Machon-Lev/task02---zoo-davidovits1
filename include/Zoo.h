@@ -9,6 +9,7 @@
 #include "Lion.h"
 #include "Monkey.h"
 
+
 class Zoo
 {
 
@@ -24,6 +25,8 @@ class Zoo
     void deleteAnimalsOfType(const std::string& type);
     void removeAnimal(const std::string& name);
     void printAnimals() const;
+    void printMenu();
+    void printCommandNames();
     std::unique_ptr<Animal> createAnimal(const std::string& kind, const std::string& name);
     void initZoo();
 

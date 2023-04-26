@@ -51,12 +51,22 @@ void Owl::step()
 				Location l(-OWLMOVE, -OWLMOVE);
 				location += l;
 			}
+			else
+			{
+				int directionInt = rand() % 4 + 4;
+				direction = static_cast<Direction>(directionInt);
+			}
 			break;
 		case Direction::UpRight:
 			if (location.row > MINROWCOL && location.col < MAXCOL)
 			{
 				Location l(-OWLMOVE, OWLMOVE);
 				location += l;
+			}
+			else
+			{
+				int directionInt = rand() % 4 + 4;
+				direction = static_cast<Direction>(directionInt);
 			}
 			break;
 		case Direction::DownLeft:
@@ -65,12 +75,22 @@ void Owl::step()
 				Location l(OWLMOVE, -OWLMOVE);
 				location += l;
 			}
+			else
+			{
+				int directionInt = rand() % 4 + 4;
+				direction = static_cast<Direction>(directionInt);
+			}
 			break;
 		case Direction::DownRight:
 			if (location.row < MAXROW && location.col < MAXCOL)
 			{
 				Location l(OWLMOVE, OWLMOVE);
 				location += l;
+			}
+			else
+			{
+				int directionInt = rand() % 4 + 4;
+				direction = static_cast<Direction>(directionInt);
 			}
 			break;
 		default:

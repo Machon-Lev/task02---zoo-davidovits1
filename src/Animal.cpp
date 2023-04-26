@@ -16,7 +16,7 @@ Location Animal::random()
 	return Location(row, col);
 }
 
-Animal::Animal(const std::string& n): name(n)
+Animal::Animal(const std::string& n):  name(n)
 {
 	location = random();
 }
