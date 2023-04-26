@@ -12,6 +12,12 @@ Lion::Lion(const std::string& n, const Location& l) : Animal(n, l)
 	direction = static_cast<Direction>(directionInt);
 }
 
+Lion::Lion(const std::string& n) : Animal(n)
+{
+	int directionInt = rand() % 2 + 2;
+	direction = static_cast<Direction>(directionInt);
+}
+
 void Lion::printDetails() const
 {
 	std::cout << "Kind: Lion" << std::endl;
@@ -25,7 +31,7 @@ char Lion::getInitial() const
 
 void Lion::step()
 {
-	if (mooving)
+	if (isMoving)
 	{
 		switch (direction)
 		{

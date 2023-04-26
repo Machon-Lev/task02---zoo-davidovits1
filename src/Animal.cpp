@@ -6,6 +6,26 @@
 //	location = l;
 //}
 
+
+
+Location Animal::random()
+{
+	int row = std::rand() % 20; // random number between 0 and 20
+	int col = std::rand() % 40; // random number between 0 and 40
+
+	return Location(row, col);
+}
+
+Animal::Animal(const std::string& n): name(n)
+{
+	location = random();
+}
+
+bool Animal::getIsMoveing()
+{
+	return isMoving;
+}
+
 void Animal::printDetails() const
 {
 	std::cout << "Name: " << name << std::endl;
@@ -31,12 +51,12 @@ Direction Animal::getDirection() const
 
 void Animal::stop()
 {
-	mooving = false;
+	isMoving = false;
 }
 
 void Animal::move()
 {
-	mooving = true;
+	isMoving = true;
 }
 
 std::ostream& operator<<(std::ostream& os, Direction dir)

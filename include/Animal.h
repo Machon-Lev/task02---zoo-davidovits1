@@ -5,15 +5,18 @@
 
 class Animal {
 protected:
-	bool mooving = true;
+	bool isMoving = true;
 	std::string name;
 	Location location;
 	Direction direction;
 	
 
 public:
+	static Location random();
 	Animal(): location() {};
 	Animal(const std::string& n, const Location& l) : name(n), location(l) {}
+	Animal(const std::string& n);
+	bool getIsMoveing();
 	virtual void printDetails() const;
 	virtual char getInitial() const = 0;
 	Location getLocation() const;

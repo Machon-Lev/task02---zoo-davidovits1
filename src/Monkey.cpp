@@ -16,6 +16,14 @@ Monkey::Monkey(const std::string& n, const Location& l):Animal(n, l)
 	direction = static_cast<Direction>(directionInt);
 }
 
+Monkey::Monkey(const std::string& n) : Animal(n)
+{
+	count = 1;
+	numMove = rand() % 2 + 1;
+	int directionInt = rand() % 4;
+	direction = static_cast<Direction>(directionInt);
+}
+
 void Monkey::printDetails() const
 {
 	std::cout << "Kind: Monkey" << std::endl;
@@ -36,7 +44,7 @@ void Monkey::step()
 		direction = static_cast<Direction>(directionInt);
 		count = 1;
 	}
-	if (mooving)
+	if (isMoving)
 	{
 		int minRowCol;
 		int maxRow;

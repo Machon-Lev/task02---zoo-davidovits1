@@ -12,6 +12,12 @@ Owl::Owl(const std::string& n, const Location& l): Animal(n, l)
 	direction = static_cast<Direction>(directionInt);
 }
 
+Owl::Owl(const std::string& n) : Animal(n)
+{
+	int directionInt = rand() % 4 + 4;
+	direction = static_cast<Direction>(directionInt);
+}
+
 void Owl::printDetails() const
 {
 	std::cout << "Kind: Owl" << std::endl;
@@ -26,7 +32,7 @@ char Owl::getInitial() const
 
 void Owl::step()
 {
-	if (mooving)
+	if (isMoving)
 	{
 		const int MINROWCOL = 2;
 		const int MAXROW = 17;

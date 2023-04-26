@@ -7,6 +7,7 @@ public:
 
 	Monkey();
 	Monkey(const std::string& n, const Location& l);
+	Monkey(const std::string& n);
 
 	void printDetails() const override;
 	char getInitial() const override;
