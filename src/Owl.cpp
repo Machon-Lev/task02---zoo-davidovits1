@@ -18,6 +18,11 @@ Owl::Owl(const std::string& n) : Animal(n)
 	direction = static_cast<Direction>(directionInt);
 }
 
+std::string Owl::getType() const
+{
+	return "Owl";
+}
+
 void Owl::printDetails() const
 {
 	std::cout << "Kind: Owl" << std::endl;

@@ -1,14 +1,7 @@
 #include "Zoo.h"
 
-//Location Zoo::random()
-//{
-//    int row = std::rand() % 20; // random number between 0 and 20
-//    int col = std::rand() % 40; // random number between 0 and 40
-//    
-//    return Location(row, col);
-//}
 
-void Zoo::stopAnmal(int row, int col) const
+void Zoo::stopAnimal(int row, int col) const
 {
     Location l(row, col);
     for (const auto& animal : animals) {
@@ -17,7 +10,7 @@ void Zoo::stopAnmal(int row, int col) const
     }
 }
 
-void Zoo::moveAnmal(int row, int col) const
+void Zoo::moveAnimal(int row, int col) const
 {
     Location l(row, col);
     for (const auto& animal : animals) {
@@ -27,75 +20,35 @@ void Zoo::moveAnmal(int row, int col) const
     }
 }
 
+void Zoo::stepAllAnimals()
+{
+    for (const auto& animal : animals) {
+        animal->step();
+    }
+}
+
 Zoo::Zoo()
 {
     std::srand(std::time(nullptr)); // seed the random number generator with the current time
 }
 void Zoo::run() {
-    //std::unique_ptr<Animal> animal;// = std::make_unique<Owl>("Hedwig");
-    std::string animalType;
-    std::string animalName;
 
-    animalType = "Owl";
-    animalName = "Hedwig";
-    animals.emplace_back(createAnimal(animalType, animalName));
+    initZoo();
 
-    animalType = "Lion";
-    animalName = "Simba";
-    animals.emplace_back(createAnimal(animalType, animalName));
-
-    animalType = "Monkey";
-    animalName = "Rafiki";
-    animals.emplace_back(createAnimal(animalType, animalName));
-
-    animalType = "Owl";
-    animalName = "Erol";
-    animals.emplace_back(createAnimal(animalType, animalName));
-
-    animalType = "Lion";
-    animalName = "Nala";
-    animals.emplace_back(createAnimal(animalType, animalName));
-
-    animalType = "Monkey";
-    animalName = "Tarzan";
-    animals.emplace_back(createAnimal(animalType, animalName));
-
-    //animal = creatAnimal(animalType, animalName);
-    //addAnimal(std::move(animal));
-
-    //animal = std::make_unique<Lion>("simba");
-    //addAnimal(std::move(animal));
-
-    //animal = std::make_unique<Monkey>("Rafiki");
-    //addAnimal(std::move(animal));
-    //std::unique_ptr<Lion> lion = std::make_unique<Lion>("Simba");
-    //addAnimal(std::move(lion));
-
-    //std::unique_ptr<Monkey> monkey = std::make_unique<Monkey>("Rafiki");
-    //addAnimal(std::move(monkey));
-    //
-    //std::unique_ptr<Owl> owl1 = std::make_unique<Owl>("Erol");
-    //addAnimal(std::move(owl1));
-
-    //std::unique_ptr<Lion> lion1 = std::make_unique<Lion>("Nala");
-    //addAnimal(std::move(lion1));
-
-    //std::unique_ptr<Monkey> monkey1 = std::make_unique<Monkey>("Tarzan");
-    //addAnimal(std::move(monkey1));
-
-    printTable(animals);
+    printTable();
 
     printAnimals();
-    for (auto it = animals.begin(); it != animals.end(); ++it) {
-        (*it)->move();
-        (*it)->step();
+
+    for (int i = 0; i < 5; i++)
+    {
+        stepAllAnimals();
+        printTable();
+        printAnimals();
     }
-    printTable(animals);
+ 
+    deleteAnimalsOfType("Owl");
 
-    printAnimals();
-
-    removeAnimal("Hedwig");
-
+    printTable();
 
     printAnimals();
 
@@ -106,10 +59,25 @@ void Zoo::addAnimal(std::unique_ptr<Animal> animal)
     animals.push_back(std::move(animal)); 
 }
 
-void Zoo::removeAnimal(int index)
+void Zoo::removeAnimal(const int row, const int col)
 {
-    animals.erase(animals.begin() + index);
+    Location l(row, col);
+    for (auto it = animals.begin(); it != animals.end(); ++it) {
+        if ((*it)->getLocation() == l) {
+            animals.erase(it);
+            return;
+        }
+    }
 }
+
+void Zoo::deleteAnimalsOfType(const std::string& type)
+{
+    animals.erase(std::remove_if(animals.begin(), animals.end(), [type](const std::unique_ptr<Animal>& animal) {
+        return animal->getType() == type;
+    }), animals.end());
+}
+
+
 
 void Zoo::removeAnimal(const std::string& name)
 {
@@ -149,12 +117,40 @@ std::unique_ptr<Animal> Zoo::createAnimal(const std::string& kind, const std::st
     return animal;
 }
 
-//void Zoo::printDirection(const Animal& a)
-//{
-//    std::cout << "direction " << a.getName() << " : " << a.getDirection() << std::endl;
-//}
+void Zoo::initZoo()
+{
+    std::string animalType;
+    std::string animalName;
 
-void Zoo::printTable(const std::vector<std::unique_ptr<Animal>>& animals)
+    animalType = "Owl";
+    animalName = "Hedwig";
+    animals.emplace_back(createAnimal(animalType, animalName));
+
+    animalType = "Lion";
+    animalName = "Simba";
+    animals.emplace_back(createAnimal(animalType, animalName));
+
+    animalType = "Monkey";
+    animalName = "Rafiki";
+    animals.emplace_back(createAnimal(animalType, animalName));
+
+    animalType = "Owl";
+    animalName = "Erol";
+    animals.emplace_back(createAnimal(animalType, animalName));
+
+    animalType = "Lion";
+    animalName = "Nala";
+    animals.emplace_back(createAnimal(animalType, animalName));
+
+    animalType = "Monkey";
+    animalName = "Tarzan";
+    animals.emplace_back(createAnimal(animalType, animalName));
+
+}
+
+
+
+void Zoo::printTable()
 {
     const int ROWS = 20;
     const int COLS = 40;

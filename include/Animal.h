@@ -21,6 +21,7 @@ public:
 	virtual char getInitial() const = 0;
 	Location getLocation() const;
 	virtual std::string getName() const;
+	virtual std::string getType() const = 0;
 	virtual Direction getDirection() const;
 	virtual void step() = 0;
 	void stop();

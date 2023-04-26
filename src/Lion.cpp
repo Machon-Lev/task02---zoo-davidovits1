@@ -18,6 +18,11 @@ Lion::Lion(const std::string& n) : Animal(n)
 	direction = static_cast<Direction>(directionInt);
 }
 
+std::string Lion::getType() const
+{
+	return "Lion";
+}
+
 void Lion::printDetails() const
 {
 	std::cout << "Kind: Lion" << std::endl;

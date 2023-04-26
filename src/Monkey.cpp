@@ -24,6 +24,11 @@ Monkey::Monkey(const std::string& n) : Animal(n)
 	direction = static_cast<Direction>(directionInt);
 }
 
+std::string Monkey::getType() const
+{
+	return "Monkey";
+}
+
 void Monkey::printDetails() const
 {
 	std::cout << "Kind: Monkey" << std::endl;

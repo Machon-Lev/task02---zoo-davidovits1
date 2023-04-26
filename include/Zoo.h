@@ -15,17 +15,17 @@ class Zoo
     std::vector<std::unique_ptr<Animal>> animals;
 
     /*static Location random();*/
-    void stopAnmal(int row, int col) const;
-    void moveAnmal(int row, int col) const;
-    void creatAnimal(const Animal& a, const std::string& name);
-
-    void printTable(const std::vector<std::unique_ptr<Animal>>& animals);
+    void stopAnimal(int row, int col) const;
+    void moveAnimal(int row, int col) const;
+    void stepAllAnimals();
+    void printTable();
     void addAnimal(std::unique_ptr<Animal> animal);
-    void removeAnimal(int index);
+    void removeAnimal(const int row, const int col);
+    void deleteAnimalsOfType(const std::string& type);
     void removeAnimal(const std::string& name);
     void printAnimals() const;
-   // void printDirection(const Animal& a);
     std::unique_ptr<Animal> createAnimal(const std::string& kind, const std::string& name);
+    void initZoo();
 
 
 public:
