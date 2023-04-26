@@ -1,12 +1,5 @@
 #include "Animal.h"
 
-//Animal::Animal(const std::string& n, const Location& l)
-//{
-//	name = n;
-//	location = l;
-//}
-
-
 
 Location Animal::random()
 {
@@ -21,7 +14,7 @@ Animal::Animal(const std::string& n):  name(n)
 	location = random();
 }
 
-bool Animal::getIsMoveing()
+bool Animal::getIsMoving()
 {
 	return isMoving;
 }
@@ -72,7 +65,5 @@ std::ostream& operator<<(std::ostream& os, Direction dir)
 	case Direction::DownLeft: return os << "DownLeft";
 	case Direction::DownRight: return os << "DownRight";
 	default: return os;
-
-
 	}
 }
