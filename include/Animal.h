@@ -106,4 +106,5 @@ public:
 	virtual void turnHorizontally() = 0;
 
 };
+// Printing operator (<<)
 std::ostream& operator<<(std::ostream& os, Direction dir);
